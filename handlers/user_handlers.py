@@ -83,7 +83,7 @@ async def process_forward_press(callback: CallbackQuery, state: FSMContext):
 
 # 1.3.1 Вход из GTR TRADE в CRYPTO + ВЫХОД В ТОРГОВЫЕ ИНСТРУМЕНТЫ
 @router.callback_query(F.data == 'crypto')
-async def process_forward_press(callback: CallbackQuery, state: FSMContext):
+async def process_forward_press(callback: CallbackQuery):
     buttons = create_crypto_keyboard()
     text = LEXICON_CRYPTO['text']
     await callback.message.edit_text(text, reply_markup=buttons)
@@ -91,7 +91,7 @@ async def process_forward_press(callback: CallbackQuery, state: FSMContext):
 
 # 1.3.2 Вход из GTR TRADE в CRYPTO
 @router.callback_query(F.data == 'crypto')
-async def process_forward_press(callback: CallbackQuery, state: FSMContext):
+async def process_forward_press(callback: CallbackQuery):
     buttons = create_crypto_keyboard()
     text = LEXICON_CRYPTO['text']
     await callback.message.edit_text(text, reply_markup=buttons)
@@ -99,13 +99,13 @@ async def process_forward_press(callback: CallbackQuery, state: FSMContext):
 
 # 1.3.3 Вход из GTR TRADE в STOCK
 @router.callback_query(F.data == 'stock')
-async def process_forward_press(callback: CallbackQuery, state: FSMContext):
+async def process_forward_press(callback: CallbackQuery):
     await callback.answer('⚠️В данный период времени ведутся \n технические работы', show_alert=True)
 
 
 # 1.4 Вход из ТОРГОВЫЕ ИНСТРУМЕНТЫ в MONITORING + ВЫХОД В ТОРГОВЫЕ ИНСТРУМЕНТЫ
 @router.callback_query(F.data == 'monitoring', StateFilter(FSMFillForm.trading_instruments_state))
-async def process_forward_press(callback: CallbackQuery, state: FSMContext):
+async def process_forward_press(callback: CallbackQuery):
     buttons = create_selling_subscription_keyboard()
     text = LEXICON_SELLING_SUBSCRIPTION['text']
     await callback.message.edit_text(text, reply_markup=buttons)
@@ -113,7 +113,7 @@ async def process_forward_press(callback: CallbackQuery, state: FSMContext):
 
 # 1.6 Вход из ТОРГОВЫЕ ИНСТРУМЕНТЫ в КУПИТЬ ПОДПИСКУ
 @router.callback_query(F.data == 'sec_buy')
-async def process_forward_press(callback: CallbackQuery, state: FSMContext):
+async def process_forward_press(callback: CallbackQuery):
     buttons = create_selling_subscription_keyboard()
     text = LEXICON_SELLING_SUBSCRIPTION['text']
     await callback.message.edit_text(text, reply_markup=buttons)
@@ -132,7 +132,7 @@ async def process_forward_press(callback: CallbackQuery, state: FSMContext):
 
 # 1.8 Вход из ТОРГОВЫЕ ИНСТРУМЕНТЫ в p2p арбитраж
 @router.callback_query(F.data == '2p2_arbitration', StateFilter(FSMFillForm.trading_instruments_state))
-async def process_forward_press(callback: CallbackQuery, state: FSMContext):
+async def process_forward_press(callback: CallbackQuery):
     buttons = create_p2p_keyboard()
     text = LEXICON_P2P['text']
     await callback.message.edit_text(text, reply_markup=buttons)
@@ -159,7 +159,7 @@ async def process_forward_press(callback: CallbackQuery, state: FSMContext):
 
 # 3.0 Вход в ветку КАК РАБОТАЕТ БОТ !!!
 @router.callback_query(F.data == 'about_the_bot', StateFilter(FSMFillForm.start_menu_state))
-async def process_forward_press(callback: CallbackQuery, state: FSMContext):
+async def process_forward_press(callback: CallbackQuery):
     buttons = create_how_work_bot_keyboard()
     text = LEXICON_HOW_WORK_BOT['text']
     await callback.message.edit_text(text, disable_web_page_preview=True, reply_markup=buttons)
@@ -177,7 +177,7 @@ async def process_forward_press(callback: CallbackQuery, state: FSMContext):
 
 # 4.0 Вход в ветку О НАС !!!
 @router.callback_query(F.data == 'about us', StateFilter(FSMFillForm.start_menu_state))
-async def process_forward_press(callback: CallbackQuery, state: FSMContext):
+async def process_forward_press(callback: CallbackQuery):
     buttons = create_about_us_keyboard()
     text = LEXICON_ABOUT_US['text']
     await callback.message.edit_text(text, disable_web_page_preview=True, reply_markup=buttons)
@@ -195,7 +195,7 @@ async def process_forward_press(callback: CallbackQuery, state: FSMContext):
 
 # 5.0 Вход в ветку РЕФЕРАЛ !!!
 @router.callback_query(F.data == 'referal', StateFilter(FSMFillForm.start_menu_state))
-async def process_forward_press(callback: CallbackQuery, state: FSMContext):
+async def process_forward_press(callback: CallbackQuery):
     buttons = create_selling_subscription_keyboard()
     text = LEXICON_REFERAL['text']
     await callback.message.edit_text(text, reply_markup=buttons)

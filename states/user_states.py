@@ -9,9 +9,8 @@ class FSMFillForm(StatesGroup):
     # бот в разные моменты взаимодейтсвия с пользователем
     start_menu_state = State()
     contact_state = State
-    trading_instruments_state = State()        # Состояние ожидания ввода имени
+    trading_instruments_state = State()
     selling_subscription_state = State()
     copy_trading_state = State()
     gtr_trade_state = State()
-    referal_state = State()
 
